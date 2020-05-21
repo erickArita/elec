@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="animacion.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>IHER LEGA </title>
+</head>
+
+<body>
+
+
+
+
+    <main class="row">
+
+        <div class="col-3">
+            <div id="btnmenu" class="toggle-btn ">
+                <span>&#9776</span>
+            </div>
+            <div id="sidebar" class="active  ">
+
+
+                <ul id="menu" class="nav flex-column animated fadeInLeft ">
+                    <li class="nav-item disabled">
+                        <img src="logo.png" alt="logo" class="logo">
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="index.html">INICIO</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="matricula.html">MATRICULAR ALUMNO</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="buscar.html">BUSCAR ALUMNO</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="tablas.html">TABLAS</a>
+                    </li>
+
+                    <li class=" nav-item" id="desplegar">
+                        <a href=""> <span class="fa fa-arrow-down"></span> NOTAS</a>
+                    </li>
+                    <li class="nav-item desplegable" >
+                        <a href="">ASIGNAR NOTAS</a>
+                    </li>
+                    <li class="nav-item desplegable" >
+                        <a href="notas/verNotas.html">VER NOTAS</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class=" col colcentral ">
+            <legend>MATRICULA DE ALUMNOS</legend>
+            <form class="form-group  card card-body  form-check-input  " id="alumnofrm">
+
+                <div class="row">
+                    <div class="form-group col ">
+                        <label for="name">Nombre del alumno</label>
+                        <input type="text" id="name" placeholder="Ingrese el nombre del alumno" class="form-control "
+                            autofocus required>
+                    </div>
+
+                    <div class="form-group col">
+                        <label for="apellido">Apellido del alumno</label>
+                        <input type="text" id="apellido" placeholder="Apellido del alumno" class="form-control"
+                            required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="id">Número de identidad</label>
+                    <input type="text" placeholder="Identidad" width="100%" maxlength="13" class="form-control" id="id"
+                        required>
+                </div>
+                <div class="row">
+
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="date">Fecha de Nacimiento</label>
+                            <input type="date" id="nacimiento" placeholder="Fecha de Nacimiento" class="form-control"
+                                required>
+                        </div>
+                    </div>
+                    <div class="col ">
+                        <div>
+                            <label for="sexo">Elija un sexo</label>
+                            <select id="sexo" class="form-control">
+                                <option selected disabled>---Sexo---</option>
+                                <option value="F">F</option>
+                                <option value="M">M</option>
+                            </select>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="modalidad">Elija la modalidad</label>
+                        <select required id="modalidad" class="form-control ">
+                            <option selected disabled hidden>---MODALIDAD---</option>
+                            <option value=1>BASICA</option>
+                            <option value=2>AÑO FUNDAMENTO</option>
+                            <option value=3>BCH</option>
+                            <option value=4>BCH AC</option>
+                            <option value=5>BTPAE</option>
+                            <option value=6>BTPCF</option>
+                            <option value=7>BTPI</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tele">No. Teléfono </label>
+                        <input type="text" id="tele" placeholder="Número de teléfono" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="padre">Domicilio</label>
+                        <input type="text" id="domicilio" placeholder="El Rosario Santa Rita " class="form-control" required>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="grado">Grado</label>
+                            <input type="number" id="grado" placeholder="Grado" min="7" max="12" class="form-control"
+                                required>
+                        </div>
+                       
+                    </div>
+                </div>
+                
+
+                <div class="form-group">
+                    <label for="padre">Padre del alumno</label>
+                    <input type="text" id="padre" placeholder="Nombre completo" class="form-control" required>
+                </div>
+
+                
+
+                <button class="btn btn-primary">
+                    Guardar
+                </button>
+
+            </form>
+
+        </div>
+        <div class="col colright">
+            <div id="alumnos">
+                <div class="row ">
+                    <div class="colright" id="lista">
+                        <table class="table table-striped">
+
+                            <thead>
+                                <tr>
+                                    <th>Número de identidad</th>
+                                    <th> Nombre</th>
+                                    <th>Apellido</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="filas">
+
+
+
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+
+
+</body>
+<script src="app.js"></script>
+
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="animacion.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="js/csss/tablas.css">
+    <link rel="stylesheet" href="css/all.min.css">
+
+    <title>IHER LEGA </title>
+
+</head>
+
+<body>
+
+    <section class="scc">
+        <div>
+            <ul id="mnubutton" class="active">
+                <li id="btnmenu" class="toggle-btn ">
+                    <span>&#9776</span>
+                </li>
+            </ul>
+        </div>
+
+        <div id="sidebar" class="active  ">
+
+            <ul id="menu" class="nav flex-column animated fadeInLeft ">
+
+
+
+                <li class="nav-item disabled">
+                    <img src="logo.png" alt="logo" class="logo">
+                </li>
+
+                <li class="nav-item">
+                    <a href="index.html">INICIO</a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="matricula.html">MATRICULAR ALUMNO</a>
+                </li c>
+
+                <li class="nav-item">
+                    <a href="buscar.html">BUSCAR ALUMNO</a>
+                </li>
+
+                <li class="nav-item">
+                    <a id="tab" href="tablas.html">TABLAS</a>
+                </li>
+                <li class=" nav-item" id="desplegar">
+                    <a href=""> <span class="fa fa-arrow-down"></span> NOTAS</a>
+                </li>
+                <li class="nav-item desplegable">
+                    <a href="">ASIGNAR NOTAS</a>
+                </li>
+                <li class="nav-item desplegable">
+                    <a href="notas/verNotas.html">VER NOTAS</a>
+                </li>
+
+            </ul>
+
+
+        </div>
+    </section>
+
+    <div id="inner">
+        <div class=" container fila">
+            <div class="row fila">
+
+
+
+                <seccion class="buscgrado col  distancia">
+
+                    <div class="row">
+                        <label for="ingrado">Generar Tabla de Alumnos</label>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="row ">
+                        <div>
+                            <input type="number" id="intablaGrado" min="7" max="12" required>
+                        </div>
+
+                        <div class="tablacrear">
+                            <select required id="tablaGrado" class="form-control">
+
+
+
+                            </select>
+                        </div>
+
+                        <div>
+                            <button type="button" class="btn btn-primary  " id="generarBtn">
+                                GENERAR
+                            </button>
+
+                        </div>
+
+                        <div>
+                            <button class=" btn exel form-control fa fa-cloud-download-alt" id="btnExportar">
+                                Descargar como exel
+                            </button>
+
+                        </div>
+
+                    </div>
+                </seccion>
+
+                <div class="w-100"></div>
+
+                <section class="row tbl">
+
+                    <table id="tabla" class="table table-hover  ">
+                        <thead>
+                            <th style="width: 2rem;">Edición</th>
+                            <th style="width: 10rem;">Número de identidad</th>
+                            <th> Nombre</th>
+                            <th>Apellido</th>
+                            <th>Sexo</th>
+                            <th>Edad</th>
+                            <th>Grado</th>
+                            <th>Modalidad</th>
+                            <th>Domicilio</th>
+                            <th>Padre del alumno</th>
+                            <th>Teléfono</th>
+                        </thead>
+                        <tbody id="tablagenerar">
+
+                        </tbody>
+
+                    </table>
+                </section>
+            </div>
+
+        </div>
+
+
+
+
+        <aside id="modal1" class="modal">
+            <div class="content-modal">
+                <header>
+                    <a href="#" class="close-modal">x</a>
+                    <h2>Editar datos del alumno</h2>
+                </header>
+                <article>
+                    <form class="form-group  card card-body  form-check-input  " id="alumnofrm">
+
+                        <div class="row">
+                            <div class="form-group col ">
+                                <label for="name">Nombre del alumno</label>
+                                <input type="text" id="nombr" placeholder="Ingrese el nombre del alumno"
+                                    class="form-control " required>
+                            </div>
+
+                            <div class="form-group col">
+                                <label for="apellido">Apellido del alumno</label>
+                                <input type="text" id="apellido" placeholder="Apellido del alumno" class="form-control"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="id">Número de identidad</label>
+                            <input type="text" placeholder="Identidad" width="100%" maxlength="13" class="form-control"
+                                id="id" required>
+                        </div>
+                        <div class="row">
+
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="date">Fecha de Nacimiento</label>
+                                    <input type="date" id="nacimiento" placeholder="Fecha de Nacimiento"
+                                        class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col ">
+                                <div>
+                                    <label for="sexo">Elija un sexo</label>
+                                    <select id="sexo" class="form-control">
+                                        <option selected disabled>---Sexo---</option>
+                                        <option value="F">F</option>
+                                        <option value="M">M</option>
+                                    </select>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <label for="modalidad">Elija la modalidad</label>
+                                <select required id="modalidad" class="form-control ">
+                                    <option value="1">BASICA</option>
+                                    <option value="2">AÑO FUNDAMENTO</option>
+                                    <option value="3">BCH</option>
+                                    <option value="4">BCH AC</option>
+                                    <option value="5">BTPAE</option>
+                                    <option value="6">BTPCF</option>
+                                    <option value="7">BTPI</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="grado">Grado</label>
+                                    <input type="number" id="grado" placeholder="Grado" min="7" max="12"
+                                        class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row ml-1">
+                            <div class="form-group p-1">
+                                <label for="tele">No. Teléfono </label>
+                                <input type="number" id="tele" placeholder="Número de teléfono" class="form-control"
+                                    required>
+                            </div>
+                            <div class="p-1">
+                                <label for="domicilio ">Domicilio</label>
+                                <input type="text" id="domicilio" placeholder="Ingrese domicilio" class="form-control"
+                                    required>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+
+                            <div class="form-group">
+                                <label for="padre">Padre del alumno</label>
+                                <input type="text" id="padre" placeholder="Nombre completo" class="form-control"
+                                    required>
+                            </div>
+                        </div>
+
+
+
+                        <button class="btn btn-primary " id="save">
+                            Guardar
+                        </button>
+
+                    </form>
+                </article>
+
+            </div>
+        </aside>
+
+    </div>
+    <script>
+        window.jQuery = window.$ = require('jquery');
+    </script>
+
+    <script>
+        require('@popperjs/core')
+    </script>
+ 
+    <script>
+        require('xlsx')
+    </script>
+    <script>
+        require('filesaver')
+    </script>
+    <script>
+        require('tableexport')
+    </script>
+
+     
+
+    <script src="js/tablas.js"></script>
+
+
+
+
+
+</body>
+
+
+
+</html>

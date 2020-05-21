@@ -1,0 +1,168 @@
+.tablacrear select {
+    width: 12rem;
+}
+
+
+.btn {
+    margin-left: 1rem;
+    margin-right: 10rem;
+
+}
+
+
+.fila {
+    margin-right: 0rem;
+    width: 100%;
+}
+
+.tbl {
+    display: flex;
+
+    height: 80vh;
+    overflow-y: auto;
+    margin: 0;
+    margin-left: 4rem;
+    width: auto;
+}
+
+/* botond exel */
+.exel {
+
+    background-color: green;
+    color: white;
+    height: 2.3rem;
+    width: 13rem;
+}
+
+
+
+#tablagenerar tr i {
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 100ms;
+}
+
+#tablagenerar tr i:hover {
+    font-size: 1.3rem;
+    transition: 100ms;
+
+}
+
+
+.table {
+    width: 60rem;
+    overflow-y: auto;
+}
+
+.table thead th {
+    padding: 5px;
+
+    font-size: 0.9rem;
+
+}
+
+
+.table tbody tr {
+    padding: 1rem 0;
+    width: auto;
+}
+
+.table tbody tr td {
+    padding: 1rem 0;
+    padding-bottom: 3px;
+    text-align: center;
+    width: auto;
+}
+
+#edit {
+    color: rgb(194, 194, 14);
+    padding-right: 3px;
+    padding-bottom: 15px;
+}
+
+#delete {
+    color: tomato;
+}
+
+.buscgrado {
+    margin-left: 50px;
+}
+
+
+/* modal */
+#alumnofrm {
+    margin-left: 1rem;
+}
+
+
+.modal {
+    position: fixed;
+    top: -100vh;
+
+    z-index: 99999999;
+    background: rgba(0, 0, 0, 0.75);
+
+    height: 100vh;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    display: block;
+
+}
+
+.modal .content-modal {
+    width: 98%;
+    max-width: 500px;
+    position: fixed;
+    left: 50%;
+    top: -100vh;
+    
+    transition: top 0.35s ease;
+    margin-left: -250px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 29px;
+    z-index: 999999999;
+    background: linear-gradient(45deg, #000850 0%, #000320 100%), radial-gradient(100% 225% at 100% 0%, #FF6928 0%, #000000 100%), linear-gradient(225deg, #FF7A00 0%, #000000 100%), linear-gradient(135deg, #CDFFEB 10%, #CDFFEB 35%, #009F9D 35%, #009F9D 60%, #07456F 60%, #07456F 67%, #0F0A3C 67%, #0F0A3C 100%);
+    background-blend-mode: screen, overlay, hard-light, normal;
+}
+
+.modal h2 {
+    padding: 0.5;
+    margin: 0;
+    text-align: center;
+}
+
+.card {
+    border-radius: 50px;
+}
+
+.close-modal {
+    color: #e74c3c;
+    position: absolute;
+    top: 0.2em;
+    right: 0.37em;
+    margin: 0;
+    padding: 5px;
+    font-weight: bold;
+    text-decoration: none;
+
+}
+
+.modal:target {
+    opacity: 1;
+    top: 0;
+
+}
+
+.modal:target .content-modal {
+    top: 50px;
+    transition: top 0.35s ease;
+    padding-right: 1rem;
+
+}
+
+.distancia{
+    margin-top: 3rem;
+}
+body{
+    overflow-y: auto;
+}

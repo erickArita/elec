@@ -1,0 +1,251 @@
+* {
+  margin: 0;
+  padding: 0;
+
+
+}
+
+html {
+  background-color: rgba(255, 255, 255, 0.562);
+}
+
+#sidebar {
+  position: absolute;
+  width: 200px;
+  height: 100vh;
+  background: linear-gradient(45deg, #000850 0%, #000320 100%), radial-gradient(100% 225% at 100% 0%, #FF6928 0%, #000000 100%), linear-gradient(225deg, #FF7A00 0%, #000000 100%), linear-gradient(135deg, #CDFFEB 10%, #CDFFEB 35%, #009F9D 35%, #009F9D 60%, #07456F 60%, #07456F 67%, #0F0A3C 67%, #0F0A3C 100%);
+  background-blend-mode: screen, overlay, hard-light, normal;
+  transform: translateX(-200px);
+  transition: 900ms;
+
+}
+
+#sidebar:first-child {
+  position: absolute;
+  width: 200px;
+  height: 100vh;
+
+  opacity: 100;
+  transition: 2s;
+
+}
+
+
+
+#sidebar.active {
+  transform: translateX(0px);
+  position: static;
+
+}
+
+
+#sidebar ul {
+  padding: 0;
+}
+
+#sidebar ul li a:hover {
+  color: rgb(64, 109, 233);
+  transition: 800ms;
+}
+
+#sidebar ul li {
+  color: black;
+  text-align: center;
+  margin: 0;
+  padding: 15px 10px;
+  list-style: none;
+  border-bottom: 1px solid rgba(100, 100, 100, 0.3);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+#sidebar ul li:first-child {
+  color: black;
+  text-align: center;
+  margin: 0;
+  padding: 1px 5px;
+  list-style: none;
+  border-bottom: 1px solid rgba(100, 100, 100, 0.3);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+#sidebar ul li:hover {
+  color: rgb(31, 31, 31);
+
+  background-color: rgb(37, 34, 34);
+  transition: 1s;
+}
+
+#sidebar ul li:hover:first-child {
+  color: rgb(31, 31, 31);
+  background-color: transparent;
+  transition: 1s;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+.toggle-btn {
+  position: static;
+  cursor: pointer;
+  background: linear-gradient(45deg, #fffb01 0%, #000320 100%), radial-gradient(100% 225% at 100% 0%, #FF6928 0%, #000000 100%), linear-gradient(225deg, #FF7A00 0%, #000000 100%), linear-gradient(135deg, #CDFFEB 10%, #CDFFEB 35%, #009F9D 35%, #009F9D 60%, #07456F 60%, #07456F 67%, #0F0A3C 67%, #0F0A3C 100%);
+  background-blend-mode: screen, overlay, normal;
+  width: 200px;
+  height: 42px;
+  transition: 1000ms;
+}
+
+.scc {
+  position: fixed;
+  height: 100vh;
+}
+
+#mnubutton {
+  position: inherit;
+  width: 200px;
+  margin: 0;
+
+}
+
+#menu a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.87);
+  font-weight: bold;
+}
+
+.ver {
+  background-color: transparent;
+  color: rgb(31, 31, 31);
+  transform: translateX(-170px);
+  transition: 1000ms;
+}
+
+.ver span {
+  background-color: transparent;
+  color: rgb(31, 31, 31);
+  transform: translateX(170px);
+  height: 99%;
+  transition: 1000ms;
+}
+
+.toggle-btn span {
+  display: flex;
+  width: 30px;
+  align-items: flex-end;
+  text-align: end;
+  font-size: 29px;
+  border: 1px solid black;
+}
+
+.toggle-btn span:hover {
+  color: rgb(64, 109, 233);
+  transition: 800ms;
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.781);
+}
+
+#desplegar a {
+  color: rgb(0, 86, 247);
+
+}
+
+.desplegable {
+  opacity: 0;
+  transform: translateY(-1rem);
+  transition: 800ms;
+}
+
+.ydesplegable {
+  opacity: 1;
+  position: relative;
+  transform: translateY(0.3rem);
+  transform-origin: top;
+  transition: 1s;
+}
+
+/* formulario */
+body {
+  height: 100vh;
+
+
+}
+
+.colcentral {
+  margin-top: 3%;
+
+  margin-right: 20px;
+}
+
+.colright {
+  margin-top: 4.4%;
+}
+
+.colcentral legend {
+  text-align: center;
+}
+
+#modalidad {
+  margin: 0 40%;
+  width: 150px;
+}
+
+html {
+  overflow: hidden;
+}
+
+#alumnos {
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#lista {
+  margin-left: 20px;
+}
+
+#modalidad {
+  margin-bottom: 0.5rem;
+  margin-left: 0;
+  width: 100%;
+}
+
+
+/* tablas */
+
+.buscgrado {
+  margin-left: 10rem;
+  margin-bottom: 1rem;
+}
+
+.buscgrado input {
+  height: 2.2rem;
+  text-align: center;
+  margin-right: 1rem;
+  margin-left: 1rem;
+
+}
+
+.buscgrado.row {
+  height: 1rem;
+}
+
+.buscgrado label {
+  padding: 0 1rem;
+  font-weight: 700;
+}
+
+.buscgradi.col {
+  width: 20px;
+}
+
+.tbl {
+  margin-left: 10rem;
+}
