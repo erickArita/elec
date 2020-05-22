@@ -105,7 +105,7 @@ generar.addEventListener('click', () => {
 
     const grado = input.value;
     const modalidad = select.value;
-     
+
 
     getNotas(grado, modalidad)
 })
@@ -120,12 +120,26 @@ async function getNotas(grado, modalidad) {
     renderTabla(nota);
 }
 
+
+// sin uso
 function updateCell(id) {
+    const td = document.querySelectorAll('td');
     const body = document.getElementById(id)
+ 
+    td.forEach(i => {
+
+
+
+        console.log(i.innerHTML = `<input width="5px" `)
+
+
+
      
-      
-        
-    
+    })
+
+
+
+
 }
 
 let tabla = document.getElementById('tbl');
@@ -160,11 +174,11 @@ function renderTabla(notas) {
                 `            
                 <tbody >
         
-                    <tr id="${x.id_alumno}"  onclick="updateCell(this.id)">
+                    <tr id="${x.id_alumno}"  >
                         <td> ${x.id_alumno}</td>
                         <td>${x.nombre_alumno} </td>
                         <td> ${x.apellido_alumno}</td>
-                        <td> ${x.espanol} </td>
+                        <td> <input value =${x.espanol}> </td>
                         <td>${x.ingles}</td>
                         <td>${x.educacionart}</td>
                         <td>${x.matematicas}</td>
