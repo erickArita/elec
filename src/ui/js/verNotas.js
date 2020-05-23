@@ -185,7 +185,7 @@ function renderTabla(notas) {
                         <td>${x.estudios_sociales}</td>
                         <td>${x.educacion_civica}</td>
                         <td>${x.educacion_fisicay_deportes}</td>
-                        <td>${promedio(x, 9, 5, 14)}</td>                 <!--objeto,divisor,hasta donde corto-->
+                        <td>${promedio(x, 9, 6, 15)}</td>                 <!--objeto,divisor,hasta donde corto-->
                     </tr>
                     </tbody>  `
 

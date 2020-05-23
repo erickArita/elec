@@ -121,8 +121,8 @@ async function getNotas(g, m) {
         const conn = await getConnection();
 
         if (g < 10) {
-            const nota = await conn.query(`SELECT a.modalidad_alumno,a.grado_alumno, a.id_alumno,a.nombre_alumno,a.apellido_alumno, n.matematicas,
-            n.espanol,n.ingles,n.educacionart,n.tecnologia,n.cienciasnaturales,n.estudios_sociales,n.educacion_civica,
+            const nota = await conn.query(`SELECT a.modalidad_alumno,a.grado_alumno, a.id_alumno,a.nombre_alumno,a.apellido_alumno,n.id_nota, n.matematicas,
+             n.espanol,n.ingles,n.educacionart,n.tecnologia,n.cienciasnaturales,n.estudios_sociales,n.educacion_civica,
             n.educacion_fisicay_deportes FROM cole.notas AS n INNER JOIN cole.alumno AS a ON n.id_nota =a.ide_alumno where a.grado_alumno =? AND a.modalidad_alumno = ?`, [g, m]);
 
             console.log(nota)
@@ -216,8 +216,8 @@ async function getNotas(g, m) {
             return nota;
         }
 
-         // 12 de cont finanzas
-         if (g == 12 & m == 6) {
+        // 12 de cont finanzas
+        if (g == 12 & m == 6) {
 
             const nota = await conn.query(`SELECT a.modalidad_alumno,a.grado_alumno, a.id_alumno,a.nombre_alumno,a.apellido_alumno,
             cfii.alumnocf_ii,cfii.economiai,cfii.legislacion,cfii.operaciones_tributa,cfii.contabilidad_bancaria,cfii.administracion_finan_i,cfii.
@@ -298,8 +298,21 @@ async function saveAlumnoInNotas(modalidad, grado) {
 
 }
 
-// asignar notas
 
+
+// asignar notas 
+async function updateNotas(notas,modalidad,grado,idNota) {
+    const conn = await getConnection();
+
+    // validamos en que grado esta para guardar notas en su respectiva tabla
+    if (modalidad = 7) {
+
+        conn.query('UPDATE notas SET ? WHERE id_nota=?', [notas,idNota])
+
+    }
+
+
+}
 module.exports = {
     createWindow,
     createAlumno,
@@ -308,5 +321,6 @@ module.exports = {
     deleteAlumno,
     getthinkById,
     updateAlumno,
-    getNotas
+    getNotas,
+    updateNotas
 }

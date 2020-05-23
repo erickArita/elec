@@ -120,24 +120,33 @@ async function getNotas(grado, modalidad) {
     renderTabla(nota);
 }
 
+// asifnar notas,
+async function updateCell(id, idnota, moda, grado) {
+    const td = document.getElementById(id);
 
-// sin uso
-function updateCell(id) {
-    const td = document.querySelectorAll('td');
-    const body = document.getElementById(id)
- 
-    td.forEach(i => {
+    let tdV = td.children;
+    console.log(moda)
+    if (moda == 1) {
 
+        console.log(id)
+        // objeto en el cual van todas las notas
+        const basica = {
 
+            matematicas: tdV.item(3).querySelector('input').value,
+            espanol: tdV.item(4).querySelector('input').value,
+            ingles: tdV.item(5).querySelector('input').value,
+            educacionart: tdV.item(6).querySelector('input').value,
+            tecnologia: tdV.item(7).querySelector('input').value,
+            cienciasnaturales: tdV.item(8).querySelector('input').value,
+            estudios_sociales: tdV.item(9).querySelector('input').value,
+            educacion_civica: tdV.item(10).querySelector('input').value,
+            educacion_fisicay_deportes: tdV.item(11).querySelector('input').value
 
-        console.log(i.innerHTML = `<input width="5px" `)
+        }
+        await main.updateNotas(basica, moda, grado, idnota)
+    }
 
-
-
-     
-    })
-
-
+    
 
 
 }
@@ -174,20 +183,20 @@ function renderTabla(notas) {
                 `            
                 <tbody >
         
-                    <tr id="${x.id_alumno}"  >
+                    <tr id="${x.id_alumno}" onkeyup="updateCell(this.id,${x.id_nota},1,7)" >
                         <td> ${x.id_alumno}</td>
                         <td>${x.nombre_alumno} </td>
                         <td> ${x.apellido_alumno}</td>
-                        <td> <input value =${x.espanol}> </td>
-                        <td>${x.ingles}</td>
-                        <td>${x.educacionart}</td>
-                        <td>${x.matematicas}</td>
-                        <td>${x.tecnologia}</td>
-                        <td>${ x.cienciasnaturales}</td>
-                        <td>${x.estudios_sociales}</td>
-                        <td>${x.educacion_civica}</td>
-                        <td>${x.educacion_fisicay_deportes}</td>
-                        <td>${promedio(x, 9, 5, 14)}</td>                 <!--objeto,divisor,hasta donde corto-->
+                        <td><input value= ${x.espanol}> </td>
+                        <td><input value=${x.ingles}></td>
+                        <td><input value=${x.educacionart}></td>
+                        <td><input value=${x.matematicas}></td>
+                        <td><input value=${x.tecnologia}></td>
+                        <td><input value=${ x.cienciasnaturales}></td>
+                        <td><input value=${x.estudios_sociales}></td>
+                        <td><input value=${x.educacion_civica}></td>
+                        <td><input value=${x.educacion_fisicay_deportes}></td>
+                        <td>${promedio(x, 9, 6, 15)}</td>  <!--objeto,divisor,hasta donde corto-->
                     </tr>
                     </tbody>  `
 
