@@ -187,9 +187,7 @@ async function deleteAlumno(id) {
         const result = await main.deleteAlumno(id);
         console.log('borrado');
         getTablas();
-    } else {
-
-    }
+    }  
 
 };
 

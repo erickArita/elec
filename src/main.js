@@ -263,14 +263,14 @@ async function saveAlumnoInNotas(modalidad, grado) {
         }
 
         if (modalidad == 3) {
-            await conn.query('INSERT INTO bch(id_alumno) SELECT Max(ide_alumno) FROM alumno')
+            await conn.query('INSERT INTO bch(id_bch) SELECT Max(ide_alumno) FROM alumno')
         }
         if (modalidad == 4) {
-            await conn.query('INSERT INTO bchac(id_alumno) SELECT Max(ide_alumno) FROM alumno')
+            await conn.query('INSERT INTO bchac(id_bchac) SELECT Max(ide_alumno) FROM alumno')
         }
         // filtrar alumnos de 11 y 12
         if (modalidad == 5 & grado == 11) {
-            await conn.query('INSERT INTO btpae(alumno) SELECT Max(ide_alumno) FROM alumno')
+            await conn.query('INSERT INTO btpae(id_btpae) SELECT Max(ide_alumno) FROM alumno')
         }
 
         if (modalidad == 6 & grado == 11) {
@@ -281,14 +281,14 @@ async function saveAlumnoInNotas(modalidad, grado) {
         }
 
         if (modalidad == 5 & grado == 12) {
-            await conn.query('INSERT INTO btpae_ii(alumno) SELECT Max(ide_alumno) FROM alumno')
+            await conn.query('INSERT INTO btpae_ii(alumnoae_ii) SELECT Max(ide_alumno) FROM alumno')
         }
 
         if (modalidad == 6 & grado == 12) {
-            await conn.query('INSERT INTO btpcf_ii(alumno) SELECT Max(ide_alumno) FROM alumno')
+            await conn.query('INSERT INTO btpcf_ii(alumnocf_ii) SELECT Max(ide_alumno) FROM alumno')
         }
         if (modalidad == 7 & grado == 12) {
-            await conn.query('INSERT INTO btpi_ii(alumno) SELECT Max(ide_alumno) FROM alumno')
+            await conn.query('INSERT INTO btpi_ii(alumnoi_ii) SELECT Max(ide_alumno) FROM alumno')
         }
 
 
@@ -301,14 +301,61 @@ async function saveAlumnoInNotas(modalidad, grado) {
 
 
 // asignar notas 
-async function updateNotas(notas,modalidad,grado,idNota) {
+async function updateNotas(notas, modalidad, grado, idNota) {
     const conn = await getConnection();
 
     // validamos en que grado esta para guardar notas en su respectiva tabla
-    if (modalidad = 7) {
+    if (modalidad == 1) {
 
-        conn.query('UPDATE notas SET ? WHERE id_nota=?', [notas,idNota])
+        conn.query('UPDATE notas SET ? WHERE id_nota=?', [notas, idNota])
+        console.log('basica')
+    }
 
+    if (modalidad == 2) {
+
+        conn.query('UPDATE anofundamento SET ? WHERE alumno=?', [notas, idNota])
+        console.log('decimo')
+    }
+
+    if (modalidad == 3) {
+
+        conn.query('UPDATE bch SET ? WHERE id_bch=?', [notas, idNota])
+        console.log('bch')
+    }
+
+    if (modalidad == 4) {
+
+        conn.query('UPDATE bchac SET ? WHERE id_bchac=?', [notas, idNota])
+    }
+
+    if (modalidad == 5 && grado == 11) {
+
+        conn.query('UPDATE btpae SET ? WHERE id_btpae=?', [notas, idNota])
+    }
+
+    if (modalidad == 6 && grado == 11) {
+
+        conn.query('UPDATE btpcf SET ? WHERE id_alumnocf=?', [notas, idNota])
+    }
+    // informatica insertar notas de /asignar notas
+    if (modalidad == 7 && grado == 11) {
+
+        conn.query('UPDATE btpi SET ? WHERE alumnoi=?', [notas, idNota])
+    }
+
+    if (modalidad == 5 && grado == 12) {
+
+        conn.query('UPDATE btpae_ii SET ? WHERE alumnoae_ii=?', [notas, idNota])
+    }
+
+    if (modalidad == 6 && grado == 12) {
+
+        conn.query('UPDATE btpcf_ii SET ? WHERE alumnocf_ii=?', [notas, idNota])
+    }
+
+    if (modalidad == 7 && grado == 12) {
+
+        conn.query('UPDATE btpi_ii SET ? WHERE alumnoi_ii=?', [notas, idNota])
     }
 
 
