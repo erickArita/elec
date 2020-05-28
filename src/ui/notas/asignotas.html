@@ -78,7 +78,7 @@
                     <h1>ASIGNAR NOTAS</h1>
                 </div>
                 <div class="w-100"></div>
-                <div class="row">
+                <div >
                     <label for="intablaGrado">GRADO</label>
                     <input type="number" id="intablaGrado" min="7" max="12" required>
                 </div>
@@ -91,7 +91,11 @@
 
                     </select>
                 </div>
+                <div class="row">
+                    <label class="col" for="year">AÑO DE MATRÍCULA</label>
+                    <input class="col" id="year" class="form-control" type="text" maxlength="4" onclick="ponerYear()">
 
+                </div>
                 <div>
                     <button type="button" class="btn btn-primary" id="generarBtn" on>
                         GENERAR

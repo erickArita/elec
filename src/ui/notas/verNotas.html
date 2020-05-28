@@ -78,10 +78,12 @@
                 </div>
                 <div class="w-100"></div>
                 <div>
+                    <label for="intablaGrado">GRADO</label>
                     <input type="number" class="form-control" id="intablaGrado" min="7" max="12" required>
                 </div>
 
                 <div class="tablacrear">
+                    <label class="" for="tablaGrado">MODALIDAD</label>
                     <select required id="tablaGrado" class="form-control">
 
 
@@ -89,17 +91,17 @@
                     </select>
                 </div>
                 <div>
-
+                    <label for="year">AÑO DE MATRÍCULA</label>
                     <input id="year" class="form-control" type="text" maxlength="4" onclick="ponerYear()">
 
                 </div>
 
                 <div>
-                    <button type="button" class="btn btn-primary" id="generarBtn">
+                    <button type="button" class="btn btn-primary mt-4" id="generarBtn">
                         GENERAR
                     </button>
                 </div>
-                <button class=" btn exel form-control fa fa-cloud-download-alt" id="btnExportar">
+                <button class=" btn exel form-control fa fa-cloud-download-alt mt-4" id="btnExportar">
                     Descargar como exel
                 </button>
             </div>

@@ -97,22 +97,28 @@ function promedio(objeto, divisor, Scut, Fcut) {
     // quitamos las cifras decimales y lo limitamos a 2
     return totalNeto.toFixed(2);
 }
-
+function ponerYear(){
+    let inputYear = document.getElementById('year')
+    const now = new Date();
+    const ano = now.getFullYear();
+    console.log(inputYear)
+    inputYear.value = ano;
+}
 const generar = document.getElementById('generarBtn')
 generar.addEventListener('click', () => {
 
     const grado = input.value;
     const modalidad = select.value;
+    const year = document.getElementById('year').value
 
-
-    getNotas(grado, modalidad)
+    getNotas(grado, modalidad,year)
 })
 
 let nota = [];
 
-async function getNotas(grado, modalidad) {
+async function getNotas(grado, modalidad, year) {
 
-    nota = await main.getNotas(grado, modalidad);
+    nota = await main.getNotas(grado, modalidad, year);
 
 
     renderTabla(nota);
@@ -373,7 +379,7 @@ async function updateCell(id, idnota, moda, grado) {
             servicio_cliente: tdV.item(10).querySelector('input').value,
             contabilidad_costos: tdV.item(11).querySelector('input').value,
             auditoria: tdV.item(12).querySelector('input').value
-             
+
 
         }
         console.log(basica)
@@ -393,7 +399,7 @@ async function updateCell(id, idnota, moda, grado) {
             programacion_iv: tdV.item(10).querySelector('input').value,
             mantenimiento_repa_ii: tdV.item(11).querySelector('input').value,
             redes_informatica_ii: tdV.item(12).querySelector('input').value
-             
+
 
         }
         console.log(basica)
@@ -446,7 +452,7 @@ function renderTabla(notas) {
                         <td><input value=${x.estudios_sociales}></td>
                         <td><input value=${x.educacion_civica}></td>
                         <td><input value=${x.educacion_fisicay_deportes}></td>
-                        <td>${promedio(x, 9, 6, 15)}</td>  <!--objeto,divisor,hasta donde corto-->
+                        <td>${promedio(x, 9, 7, 16)}</td>  <!--objeto,divisor,hasta donde corto-->
                     </tr>
                     </tbody>  `
         });
@@ -509,7 +515,7 @@ function renderTabla(notas) {
                         <td><input value=${x.fisicaii}></td>
                         <td><input value=${x.lenguaje_art}></td>
                         <td><input value=${x.educacion_fisica}></td>    
-                        <td>${promedio(x, 20, 6, 27)}</td>      
+                        <td>${promedio(x, 20, 7, 28)}</td>      
                     </tr>
                     </tbody>
              `
@@ -547,6 +553,7 @@ function renderTabla(notas) {
             <th> <p  class="vertical">Educación Ambiental	</p></th>
             <th> <p  class="vertical">Diseño de Proyectos Científicos</p> </th>	
             <th> <p  class="vertical">Introduccion a la Programación</p></th>
+            <th> <p  class="vertical">Promedio</p></th>
 
         </thead>`
 
@@ -584,6 +591,7 @@ function renderTabla(notas) {
                         <td><input value=${x.edu_ambiental}></td>
                         <td><input value=${x.diseno_proyectos_ci}></td>
                         <td> <input value=${x.intro_programacion}> </td>
+                        <td> <input value=${promedio(x,24,7,31)}> </td>
                     </tr>
                     </tbody>
              `
@@ -696,7 +704,7 @@ function renderTabla(notas) {
                         <td><input value=${x.ingles_iv}></td>
                         <td><input value=${x.dibujo_tecnico}></td>
                         <td><input value=${x.funda_etica_pro}></td>
-                        <td>${promedio(x, 44, 6, 48)}</td>
+                        <td>${promedio(x, 44, 7, 49)}</td>
                     </tr>
                     </tbody>
              `
@@ -768,7 +776,7 @@ function renderTabla(notas) {
                         <td><input value=${x.investiga_mercados}></td>
                         <td><input value=${x.estadistica_admin_ii}></td>
                         <td><input value=${x.informmatica_adminis}></td>
-                        <td>${promedio(x, 23, 6, 30)}</td>
+                        <td>${promedio(x, 23, 7, 31)}</td>
                     </tr>
                     </tbody>
              `
@@ -817,7 +825,7 @@ function renderTabla(notas) {
                         <td> <input value=${x.organizacion_trabajo}> </td>
                         <td> <input value=${x.matematica_financiera}> </td>
                         <td> <input value=${x.contabilidad_ii}> </td>
-                        <td> ${promedio(x, 12, 6, 18)} </td>
+                        <td> ${promedio(x, 12, 7, 19)} </td>
                     </tr>
                     </tbody>
              `
@@ -877,7 +885,7 @@ function renderTabla(notas) {
                         <td> <input value= ${x.informatica_ii}> </td> 
                         <td> <input value= ${x.programacion_ii}> </td> 
                         <td> <input value= ${x.analisis_diseno_ii}> </td>
-                        <td> ${promedio(x, 17, 6, 23)} </td>
+                        <td> ${promedio(x, 17, 7, 24)} </td>
                     </tr>
                     </tbody>
              `
@@ -931,7 +939,7 @@ function renderTabla(notas) {
                         <td> <input value=${x.gestio_instituciones}> </td>  
                         <td> <input value=${x.administracion_ventas}> </td>  
                         <td> <input value=${x.auditoria}> </td> 
-                        <td> ${promedio(x, 13, 6, 19)} </td>   
+                        <td> ${promedio(x, 13, 7, 20)} </td>   
                 
                     </tr>
                     </tbody>`
@@ -979,7 +987,7 @@ function renderTabla(notas) {
                         <td> <input value =${x.servicio_cliente}> </td>  
                         <td> <input value =${x.contabilidad_costos}> </td>  
                         <td> <input value =${x.auditoria}> </td> 
-                        <td> ${promedio(x, 10, 6, 19)} </td>   
+                        <td> ${promedio(x, 10, 7, 20)} </td>   
                 
                     </tr>
                     </tbody>`
@@ -1028,7 +1036,7 @@ function renderTabla(notas) {
                         <td> <input value=${x.programacion_iv}> </td>  
                         <td> <input value=${x.mantenimiento_repa_ii}> </td>  
                         <td> <input value=${x.redes_informatica_ii}> </td> 
-                        <td> ${promedio(x, 10, 6, 19)} </td>   
+                        <td> ${promedio(x, 10, 7, 20)} </td>   
                 
                     </tr>
                     </tbody>`
