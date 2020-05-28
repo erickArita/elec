@@ -51,8 +51,8 @@ btnToggle.addEventListener('click', function () {
 
 
 
-
-
+const fecha= new Date
+const curYear = fecha.getFullYear()
 alumnofrm.addEventListener('submit', async (e) => {
     e.preventDefault();
     // crear un objeto que almacena el frm
@@ -67,7 +67,8 @@ alumnofrm.addEventListener('submit', async (e) => {
         modalidad_alumno: modalidad.value,
         padre_alumno: padre.value,
         domicilio_alumno: domicilio.value,
-        alumno_telefono:tel.value
+        alumno_telefono:tel.value,
+        ano:curYear
 
     }
 

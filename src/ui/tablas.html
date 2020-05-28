@@ -77,6 +77,7 @@
 
                     <div class="row">
                         <label for="ingrado">Generar Tabla de Alumnos</label>
+                        <label class=" " style="margin-left: 5rem;" for="year"> Buscar en el año</label>
                     </div>
                     <div class="w-100"></div>
                     <div class="row ">
@@ -93,13 +94,18 @@
                         </div>
 
                         <div>
+                           
+                            <input  id="year" type="text" maxlength="4" onclick="ponerYear()">
+
+                        </div>
+                        <div class="w">
                             <button type="button" class="btn btn-primary  " id="generarBtn">
                                 GENERAR
                             </button>
 
                         </div>
 
-                        <div>
+                        <div >
                             <button class=" btn exel form-control fa fa-cloud-download-alt" id="btnExportar">
                                 Descargar como exel
                             </button>
@@ -115,7 +121,7 @@
 
                     <table id="tabla" class="table table-hover  ">
                         <thead>
-                            <th style="width: 2rem;">Edición</th>
+                            <th style="width: 5rem;">Edición</th>
                             <th style="width: 10rem;">Número de identidad</th>
                             <th> Nombre</th>
                             <th>Apellido</th>
@@ -249,6 +255,50 @@
             </div>
         </aside>
 
+        <aside id="modal2" class="modal">
+            <div class="content-modal">
+                <header>
+                    <a href="#" class="close-modal">x</a>
+                    <h2>Preomover a</h2>
+                </header>
+                <div>
+                    <form id="ascender" class="form-group  card card-body  form-check-input  ">
+                        <div class="form-cont row">
+
+
+
+                            <div class="col">
+                                <div class="row">
+                                    <label for="gradoAsc">Seleccione Grado</label>
+                                </div>
+                                <div class="row">
+                                    <input id="gradoAsc" type="number" min="8" max="12">
+
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="row">
+                                    <label for="modalidad">Seleccione Modalidad</label>
+                                </div>
+                                <div class="row">
+                                    <select name="modalidad" id="modalidadAsc">
+
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="w-100 ml-5">
+                                <button class="mt-3 ml-5 btn btn-danger" type="submit">Promover</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </aside>
+
     </div>
     <script>
         window.jQuery = window.$ = require('jquery');
@@ -257,7 +307,7 @@
     <script>
         require('@popperjs/core')
     </script>
- 
+
     <script>
         require('xlsx')
     </script>
@@ -268,7 +318,7 @@
         require('tableexport')
     </script>
 
-     
+
 
     <script src="js/tablas.js"></script>
 

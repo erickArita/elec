@@ -17,6 +17,7 @@ async function createAlumno(alumno) {
         new Notification({
             title: 'IHER MANAGER',
             body: 'SE HA GUARDADO EL DATO SATISFACTORIAMENTE'
+
         }).show();
 
         saveAlumnoInNotas(alumno.modalidad_alumno, alumno.grado_alumno)
@@ -41,14 +42,15 @@ async function getAlumno() {
 
 }
 
-async function getTablas(x, y) {
+async function getTablas(grado, modalidad, year ) {
 
     try {
 
         const conn = await getConnection();
-        const m = 'SELECT alumno.id_alumno,alumno.apellido_alumno,alumno.nombre_alumno,alumno.sexo_alumno,alumno.nacimiento_alumno,alumno.grado_alumno,alumno.modalidad_alumno,alumno.padre_alumno,alumno.domicilio_alumno,alumno_telefono,modalidad.modalidad_alumno FROM alumno INNER JOIN modalidad ON alumno.modalidad_alumno = modalidad.id_modalidad  WHERE grado_alumno =? AND modalidad.id_modalidad = ?';
+      
+        const m = 'SELECT alumno.id_alumno,alumno.apellido_alumno,alumno.nombre_alumno,alumno.sexo_alumno,alumno.nacimiento_alumno,alumno.grado_alumno,alumno.modalidad_alumno,alumno.padre_alumno,alumno.domicilio_alumno,alumno_telefono,modalidad.modalidad_alumno,ano FROM alumno INNER JOIN modalidad ON alumno.modalidad_alumno = modalidad.id_modalidad  WHERE grado_alumno =? AND modalidad.id_modalidad = ? AND ano=?';
 
-        const result = await conn.query(m, [x, y]);
+        const result = await conn.query(m, [grado, modalidad, year]);
 
 
         return result;
@@ -90,7 +92,7 @@ async function deleteAlumno(id) {
 async function getthinkById(id) {
     try {
         const conn = await getConnection();
-        const result = await conn.query('SELECT alumno.id_alumno,alumno.apellido_alumno,alumno.nombre_alumno,alumno.sexo_alumno,alumno.nacimiento_alumno,alumno.grado_alumno,alumno_telefono,alumno.modalidad_alumno,alumno.padre_alumno,alumno.domicilio_alumno FROM alumno INNER JOIN modalidad ON alumno.modalidad_alumno = modalidad.id_modalidad WHERE id_alumno = ?', id);
+        const result = await conn.query('SELECT alumno.id_alumno,alumno.apellido_alumno,alumno.nombre_alumno,alumno.sexo_alumno,alumno.nacimiento_alumno,alumno.grado_alumno,alumno_telefono,alumno.modalidad_alumno,alumno.padre_alumno,alumno.domicilio_alumno,alumno.ano FROM alumno INNER JOIN modalidad ON alumno.modalidad_alumno = modalidad.id_modalidad WHERE id_alumno = ?', id);
         return result[0];
     } catch (error) {
         console.log(error);
@@ -114,22 +116,44 @@ async function updateAlumno(alumno, id) {
 
 }
 
-// ver notas
 
-async function getNotas(g, m) {
+
+// crear alumno ascendido
+async function AlumnoAscendido(alumno, grado, modalidad) {
+
+    const conn = await getConnection();
+
+    const alumnoNuevo = await getthinkById(alumno)
+
+
+    alumnoNuevo.grado_alumno = grado;
+    alumnoNuevo.modalidad_alumno = modalidad;
+    const date = new Date;
+    alumnoNuevo.ano = date.getFullYear(4)+1
+    alumnoNuevo.ide_alumno = 0;
+
+    createAlumno(alumnoNuevo)
+    
+
+
+}
+
+// ver notas 
+
+async function getNotas(g, m,year) {
     try {
         const conn = await getConnection();
 
         if (g < 10) {
-            const nota = await conn.query(`SELECT a.modalidad_alumno,a.grado_alumno, a.id_alumno,a.nombre_alumno,a.apellido_alumno,n.id_nota, n.matematicas,
+            const nota = await conn.query(`SELECT a.modalidad_alumno,a.grado_alumno, a.id_alumno,a.nombre_alumno,a.apellido_alumno,n.id_nota,a.ano, n.matematicas,
              n.espanol,n.ingles,n.educacionart,n.tecnologia,n.cienciasnaturales,n.estudios_sociales,n.educacion_civica,
-            n.educacion_fisicay_deportes FROM cole.notas AS n INNER JOIN cole.alumno AS a ON n.id_nota =a.ide_alumno where a.grado_alumno =? AND a.modalidad_alumno = ?`, [g, m]);
+            n.educacion_fisicay_deportes FROM cole.notas AS n INNER JOIN cole.alumno AS a ON n.id_nota =a.ide_alumno where a.grado_alumno =? AND a.modalidad_alumno = ? AND a.ano =?`, [g, m,year]);
 
             console.log(nota)
 
             return nota;
         } if (g == 10 & m == 2) {
-            const nota = await conn.query(`SELECT a.modalidad_alumno,a.grado_alumno, a.id_alumno,a.nombre_alumno,a.apellido_alumno,an.alumno,
+            const nota = await conn.query(`SELECT a.modalidad_alumno,a.grado_alumno, a.id_alumno,a.nombre_alumno,a.apellido_alumno,a.ano,an.alumno,
             an.matematicasi, an.biologiai, an.psicologia, an.informatica, an.quimicai,an.espanol,an.sociologia,an.fisicai,
             an.inglesi,an.filosofia,an.matematicasii,an.historia_honduras,an.biologiaii,an.quimicaii,an.espanolii,an.inglesii,
             an.orientacion_vo,an.fisicaii,an.lenguaje_art,an.educacion_fisica FROM cole.anofundamento as an INNER JOIN cole.alumno AS a ON an.alumno =a.ide_alumno WHERE a.grado_alumno =? AND a.modalidad_alumno = ?
@@ -141,7 +165,7 @@ async function getNotas(g, m) {
         // bch
         if (g == 11 & m == 3) {
 
-            const nota = await conn.query(`SELECT a.modalidad_alumno,a.grado_alumno, a.id_alumno,a.nombre_alumno,a.apellido_alumno,
+            const nota = await conn.query(`SELECT a.modalidad_alumno,a.grado_alumno, a.id_alumno,a.nombre_alumno,a.apellido_alumno,a.ano,
             bc.id_bch,bc.matematicas_iii,bc.quimica_iii,bc.lengua_literatu,bc.edu_fisica,bc.ingles_iii,bc.fun_inves_social,bc.fisica_iii,bc.logica_simbol,bc.orientac_edu_superior,bc.
             apreciacion_art,bc.tic,bc.matematicas_iv,bc.biologia_humana,bc.leng_pensamien_critico,bc.fisica_iv,bc.ingles_iv,bc.historia_contep,bc.antropologia,bc.fundament_etica_profecinal,bc.dibujo_tecnico,bc.
             edu_ambiental,bc.diseno_proyectos_ci,bc.intro_programacion,bc.intro_economia
@@ -153,7 +177,7 @@ async function getNotas(g, m) {
         // bcgac
         if (g == 11 & m == 4) {
 
-            const nota = await conn.query(`SELECT a.modalidad_alumno,a.grado_alumno, a.id_alumno,a.nombre_alumno,a.apellido_alumno,
+            const nota = await conn.query(`SELECT a.modalidad_alumno,a.grado_alumno, a.id_alumno,a.nombre_alumno,a.apellido_alumno,a.ano,
             ac.id_bchac, ac.matematicas_i, ac.espanol_i,ac.ingles_i,ac.quimica_i, ac.informatica, ac.fisica_i,ac.biologia_i,ac.filosofia, ac.psicologia,
             ac.sociologia, ac.matematicas_ii, ac.espanol_ii, ac.ingles_ii,    ac.quimica_ii,ac.fisica_ii, ac.biologia_ii,
             ac.lenguaje_art, ac.orientacion_voca,ac.historia_honduras,ac.educacion_fisica,ac.matematicas_iii, ac.lengua_literatura,ac.intro_economia,ac.fundameto_invest,
@@ -168,7 +192,7 @@ async function getNotas(g, m) {
         // btpae
         if (g == 11 & m == 5) {
 
-            const nota = await conn.query(`SELECT a.modalidad_alumno,a.grado_alumno, a.id_alumno,a.nombre_alumno,a.apellido_alumno,
+            const nota = await conn.query(`SELECT a.modalidad_alumno,a.grado_alumno, a.id_alumno,a.nombre_alumno,a.apellido_alumno,a.ano,
             ac.id_btpae,   ac.matematicasiii, ac.lengua_literatura,ac.ingles_tiii,ac.orientacion_prof,
             ac.contabilidad_bai,ac.compotamiento_orga,ac.desarrolo_socioeco,ac.adminis_ge,ac.estadistica_admin_i,
             ac.desarrolo_cultura,ac.gestion_proyectos,ac.legislacion,ac.mercadotecnia,ac.organizacion_trabajo,ac.contabilidad_basic_ii,
@@ -182,7 +206,7 @@ async function getNotas(g, m) {
         // btpcf
         if (g == 11 & m == 6) {
 
-            const nota = await conn.query(`SELECT a.modalidad_alumno,a.grado_alumno, a.id_alumno,a.nombre_alumno,a.apellido_alumno,
+            const nota = await conn.query(`SELECT a.modalidad_alumno,a.grado_alumno, a.id_alumno,a.nombre_alumno,a.apellido_alumno,a.ano,
              cf.id_alumnocf ,cf.matematica_aplicada ,cf.ingles_tec ,cf.lengua_literatura ,cf.administra_general ,
             cf.etica_orientacion ,cf.contabilidad_i ,cf.mercadotecnia ,cf.legislacion_bancaria ,cf.proyectos_presupuest ,
             cf.organizacion_trabajo ,cf.matematica_financiera ,cf.contabilidad_ii 
@@ -194,7 +218,7 @@ async function getNotas(g, m) {
 
         if (g == 11 & m == 7) {
 
-            const nota = await conn.query(`SELECT a.modalidad_alumno,a.grado_alumno, a.id_alumno,a.nombre_alumno,a.apellido_alumno,
+            const nota = await conn.query(`SELECT a.modalidad_alumno,a.grado_alumno, a.id_alumno,a.nombre_alumno,a.apellido_alumno,a.ano,
              i.alumnoi,i.matematica_iii,i.lengua_literatura,i.informatica_i,i.fisica_aplicada,i.ingles_tecnico_iii,
              i.analisis_diseno_i,i.etica_orientacion,i.lab_info,i.frogramacion_i,i.mercadotecnia,i.organizacion_trabajo,i.proyectos_presupuesto,i.legislacion,
              i.lab_info_ii,i.informatica_ii,i.programacion_ii,i.analisis_diseno_ii
@@ -206,7 +230,7 @@ async function getNotas(g, m) {
         // 12 de admin empresas
         if (g == 12 & m == 5) {
 
-            const nota = await conn.query(`SELECT a.modalidad_alumno,a.grado_alumno, a.id_alumno,a.nombre_alumno,a.apellido_alumno,
+            const nota = await conn.query(`SELECT a.modalidad_alumno,a.grado_alumno, a.id_alumno,a.nombre_alumno,a.apellido_alumno,a.ano,
             aeii.alumnoae_ii,aeii.gestion_talent_humano_i,aeii.higiene_segurudad_indus,aeii.administracion_produc,aeii.planeacion_estrategica,aeii.mercadotecnia_apli_servicios,aeii.
             matematica_finan,aeii.gestion_presupuestaria,aeii.mercadotecnia_internacional,aeii.administracion_recursos_finan,aeii.gestion_talent_humano_ii,aeii.
             gestio_instituciones,aeii.administracion_ventas,aeii.auditoria
@@ -219,7 +243,7 @@ async function getNotas(g, m) {
         // 12 de cont finanzas
         if (g == 12 & m == 6) {
 
-            const nota = await conn.query(`SELECT a.modalidad_alumno,a.grado_alumno, a.id_alumno,a.nombre_alumno,a.apellido_alumno,
+            const nota = await conn.query(`SELECT a.modalidad_alumno,a.grado_alumno, a.id_alumno,a.nombre_alumno,a.apellido_alumno,a.ano,
             cfii.alumnocf_ii,cfii.economiai,cfii.legislacion,cfii.operaciones_tributa,cfii.contabilidad_bancaria,cfii.administracion_finan_i,cfii.
              informatica_contable,cfii.administracion_finan_ii,cfii.servicio_cliente,cfii.contabilidad_costos,cfii.auditoria
              FROM cole.btpcf_ii AS cfii INNER JOIN cole.alumno AS a ON cfii.alumnocf_ii =a.ide_alumno WHERE a.grado_alumno =? AND a.modalidad_alumno = ?
@@ -230,7 +254,7 @@ async function getNotas(g, m) {
         // informatica 12
         if (g == 12 & m == 7) {
 
-            const nota = await conn.query(`SELECT a.modalidad_alumno,a.grado_alumno, a.id_alumno,a.nombre_alumno,a.apellido_alumno,
+            const nota = await conn.query(`SELECT a.modalidad_alumno,a.grado_alumno, a.id_alumno,a.nombre_alumno,a.apellido_alumno,a.ano,
             i_ii.alumnoi_ii,i_ii.lab_info_iii,i_ii.programacion_iii,i_ii.mantenimiento_repa_i,i_ii.redes_informatica_i,
             i_ii.diseno_web_i,i_ii.lab_info_iv,i_ii.diseno_web_ii,i_ii.programacion_iv,i_ii.mantenimiento_repa_ii,
             i_ii.redes_informatica_ii
@@ -360,6 +384,8 @@ async function updateNotas(notas, modalidad, grado, idNota) {
 
 
 }
+
+
 module.exports = {
     createWindow,
     createAlumno,
@@ -369,5 +395,6 @@ module.exports = {
     getthinkById,
     updateAlumno,
     getNotas,
-    updateNotas
+    updateNotas,
+    AlumnoAscendido
 }

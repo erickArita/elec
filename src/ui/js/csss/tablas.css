@@ -32,6 +32,8 @@
     color: white;
     height: 2.3rem;
     width: 13rem;
+    margin: 0;
+    margin-left: 1rem;
 }
 
 
@@ -115,7 +117,7 @@
     position: fixed;
     left: 50%;
     top: -100vh;
-    
+
     transition: top 0.35s ease;
     margin-left: -250px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -154,15 +156,39 @@
 }
 
 .modal:target .content-modal {
-    top: 50px;
+    top: 20px;
     transition: top 0.35s ease;
     padding-right: 1rem;
 
 }
 
-.distancia{
-    margin-top: 3rem;
+.distancia {
+    margin-top: 1rem;
 }
-body{
+
+body {
     overflow-y: auto;
+}
+
+/* modal de ascender */
+
+#ascender {
+    margin-left: 1rem;
+}
+
+.form-cont {
+    margin-left: 3rem;
+}
+
+/* botones con mucho margin */
+#generarBtn {
+    margin-left: 0;
+}
+
+.w{
+    width: 100px;
+}
+.w button{
+    width: 100px;
+    margin-right: 2rem;
 }

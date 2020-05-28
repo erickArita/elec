@@ -57,9 +57,7 @@ input.addEventListener('click', () => {
 
         select.innerHTML = `<option value=1>BÁSICA</option>`
 
-
     } else {
-
 
         if (input.value == 10) {
             select.innerHTML = `<option value=2>AÑO FUNDAMENTO</option>`

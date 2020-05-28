@@ -78,7 +78,7 @@
                 </div>
                 <div class="w-100"></div>
                 <div>
-                    <input type="number" id="intablaGrado" min="7" max="12" required>
+                    <input type="number" class="form-control" id="intablaGrado" min="7" max="12" required>
                 </div>
 
                 <div class="tablacrear">
@@ -87,6 +87,11 @@
 
 
                     </select>
+                </div>
+                <div>
+
+                    <input id="year" class="form-control" type="text" maxlength="4" onclick="ponerYear()">
+
                 </div>
 
                 <div>
@@ -103,10 +108,10 @@
         <div class="w-100"></div>
 
         <div class="col tbl">
-            <table id="tbl"  class="table table-hover  table-responsive  ">
+            <table id="tbl" class="table table-hover  table-responsive  ">
 
 
-               
+
             </table>
 
         </div>
@@ -130,7 +135,7 @@
         require('tableexport')
     </script>
 
-<script src="../js/verNotas.js"></script>
+    <script src="../js/verNotas.js"></script>
 </body>
 
 

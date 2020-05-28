@@ -25,7 +25,7 @@ btnDesplegar.addEventListener('click', (e) => {
     })
 
 });
-
+// efectos en la barra de menu 
 const btnToggle = document.querySelector('.toggle-btn');
 btnToggle.addEventListener('click', function () {
 
@@ -51,15 +51,11 @@ let input = document.getElementById('intablaGrado');
 let select = document.getElementById('tablaGrado');
 let selectProperties = document.getElementById('tablaGrado');
 input.addEventListener('click', () => {
-
-
     if (input.value <= 9) {
 
         select.innerHTML = `<option value=1>BÁSICA</option>`
 
-
     } else {
-
 
         if (input.value == 10) {
             select.innerHTML = `<option value=2>AÑO FUNDAMENTO</option>`
@@ -100,19 +96,29 @@ function promedio(objeto, divisor, Scut, Fcut) {
     // quitamos las cifras decimales y lo limitamos a 2
     return totalNeto.toFixed(2);
 }
+
+// pone el a:o actuar en un input de busqueda
+function ponerYear(){
+    let inputYear = document.getElementById('year')
+    const now = new Date();
+    const ano = now.getFullYear();
+    console.log(inputYear)
+    inputYear.value = ano;
+}
 const generar = document.getElementById('generarBtn')
 generar.addEventListener('click', () => {
 
     const grado = input.value;
     const modalidad = select.value;
-    console.log(grado, modalidad)
+    const year = document.getElementById('year').value
+    console.log(grado, modalidad,year)
 
-    getNotas(grado, modalidad)
+    getNotas(grado, modalidad,year)
 })
 let nota = [];
-async function getNotas(grado, modalidad) {
+async function getNotas(grado, modalidad,year) {
 
-    nota = await main.getNotas(grado, modalidad);
+    nota = await main.getNotas(grado, modalidad,year);
     renderTabla(nota);
     console.log(nota)
 }
@@ -185,7 +191,7 @@ function renderTabla(notas) {
                         <td>${x.estudios_sociales}</td>
                         <td>${x.educacion_civica}</td>
                         <td>${x.educacion_fisicay_deportes}</td>
-                        <td>${promedio(x, 9, 6, 15)}</td>                 <!--objeto,divisor,hasta donde corto-->
+                        <td>${promedio(x, 9, 7, 16)}</td>                 <!--objeto,divisor,hasta donde corto-->
                     </tr>
                     </tbody>  `
 
@@ -249,7 +255,7 @@ function renderTabla(notas) {
                         <td>${x.fisicaii}</td>
                         <td>${x.lenguaje_art}</td>
                         <td>${x.educacion_fisica}</td>    
-                        <td>${promedio(x, 20, 6, 27)}</td>      
+                        <td>${promedio(x, 20, 7, 28)}</td>      
                     </tr>
                     </tbody>
              `
@@ -287,6 +293,7 @@ function renderTabla(notas) {
             <th> <p  class="vertical">Educación Ambiental	</p></th>
             <th> <p  class="vertical">Diseño de Proyectos Científicos</p> </th>	
             <th> <p  class="vertical">Introduccion a la Programación</p></th>
+            <th><p  class="vertical">Promedio</p></th>
 
         </thead>`
 
@@ -324,6 +331,7 @@ function renderTabla(notas) {
                         <td>${x.edu_ambiental}</td>
                         <td>${x.diseno_proyectos_ci}</td>
                         <td> ${x.intro_programacion} </td>
+                        <td>${promedio(x,24,7,30)} </td>
                     </tr>
                     </tbody>
              `
@@ -436,7 +444,7 @@ function renderTabla(notas) {
                         <td>${x.ingles_iv}</td>
                         <td>${x.dibujo_tecnico}</td>
                         <td>${x.funda_etica_pro}</td>
-                        <td>${promedio(x, 44, 6, 48)}</td>
+                        <td>${promedio(x, 44, 7, 49)}</td>
                     </tr>
                     </tbody>
              `
@@ -508,7 +516,7 @@ function renderTabla(notas) {
                         <td>${x.investiga_mercados}</td>
                         <td>${x.estadistica_admin_ii}</td>
                         <td>${x.informmatica_adminis}</td>
-                        <td>${promedio(x, 23, 6, 30)}</td>
+                        <td>${promedio(x, 23, 7, 31)}</td>
                     </tr>
                     </tbody>
              `
@@ -557,7 +565,7 @@ function renderTabla(notas) {
                         <td> ${x.organizacion_trabajo} </td>
                         <td> ${x.matematica_financiera} </td>
                         <td> ${x.contabilidad_ii} </td>
-                        <td> ${promedio(x, 12, 6, 18)} </td>
+                        <td> ${promedio(x, 12, 7, 19)} </td>
                     </tr>
                     </tbody>
              `
@@ -617,7 +625,7 @@ function renderTabla(notas) {
                         <td> ${x.informatica_ii} </td> 
                         <td> ${x.programacion_ii} </td> 
                         <td> ${x.analisis_diseno_ii} </td>
-                        <td> ${promedio(x, 17, 6, 23)} </td>
+                        <td> ${promedio(x, 17, 8, 24)} </td>
                     </tr>
                     </tbody>
              `
@@ -671,7 +679,7 @@ function renderTabla(notas) {
                         <td> ${x.gestio_instituciones} </td>  
                         <td> ${x.administracion_ventas} </td>  
                         <td> ${x.auditoria} </td> 
-                        <td> ${promedio(x, 13, 6, 19)} </td>   
+                        <td> ${promedio(x, 13, 7, 20)} </td>   
                 
                     </tr>
                     </tbody>`
@@ -719,7 +727,7 @@ function renderTabla(notas) {
                         <td> ${x.servicio_cliente} </td>  
                         <td> ${x.contabilidad_costos} </td>  
                         <td> ${x.auditoria} </td> 
-                        <td> ${promedio(x, 10, 6, 19)} </td>   
+                        <td> ${promedio(x, 10, 7, 20)} </td>   
                 
                     </tr>
                     </tbody>`
@@ -768,7 +776,7 @@ function renderTabla(notas) {
                         <td> ${x.programacion_iv } </td>  
                         <td> ${x.mantenimiento_repa_ii } </td>  
                         <td> ${x.redes_informatica_ii } </td> 
-                        <td> ${promedio(x, 10, 6, 19)} </td>   
+                        <td> ${promedio(x, 10, 7, 20)} </td>   
                 
                     </tr>
                     </tbody>`

@@ -238,3 +238,9 @@ body {
     writing-mode: vertical-lr;
     transform: rotate(180deg);
 }
+
+/* boton excel */
+
+#generarBtn{
+    margin-right: 10px;
+}

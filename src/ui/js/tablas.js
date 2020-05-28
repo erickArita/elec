@@ -15,7 +15,7 @@ var grado = document.getElementById('grado');
 var sexo = document.getElementById('sexo');
 var modalidad = document.getElementById('modalidad');
 var domicilio = document.getElementById('domicilio');
-let tel =document.getElementById('tele')
+let tel = document.getElementById('tele')
 const btnToggle = document.querySelector('.toggle-btn');
 
 btnToggle.addEventListener('click', function () {
@@ -51,11 +51,7 @@ btnDesplegar.addEventListener('click', (e) => {
 
 const alumnofrm = document.getElementById('alumnofrm');
 const guardar = document.getElementById('save');
-// requiero este modulo para comunicar enlazar el frontend con main
 
-
-
-// boton de trash y boton de edit
 
 
 
@@ -71,16 +67,24 @@ generarBtn.addEventListener('click', (e) => {
 
     getTablas();
 });
+// pone el a:o actuar en un input de busqueda
+function ponerYear(){
+    let inputYear = document.getElementById('year')
+    const now = new Date();
+    const ano = now.getFullYear();
+    console.log(inputYear)
+    inputYear.value = ano;
+}
 
 getTablas = async (e) => {
 
     const intablaGrado = document.getElementById('intablaGrado').value;
     const tablaGrado = document.getElementById('tablaGrado').value;
+    const years = document.getElementById('year').value
 
-    let sTabla = await main.getTablas(intablaGrado, tablaGrado);
+   
 
-
-
+    let sTabla = await main.getTablas(intablaGrado, tablaGrado, parseInt(years));
 
 
     renderTabla(sTabla);
@@ -102,7 +106,7 @@ renderTabla = (sTabla) => {
         tablaGenerar.innerHTML +=
             `
             <tr > 
-            <td > <a href="#modal1" id="show-modal" onclick="editAlumno(${x.id_alumno})"><i id="edit" class="fa fa-pen-square animated " ></i></a>
+            <td ><a href="#modal2"><i id="show-modal"  class="fa fa-arrow-up animated" onclick="ascenderAlumno(${x.id_alumno})"></a></i> <a href="#modal1" id="show-modal" onclick="editAlumno(${x.id_alumno})"><i id="edit" class="fa fa-pen-square animated " ></i></a>
             <i id="delete"  class="fa fa-trash-alt animated " onclick="deleteAlumno(${x.id_alumno})" ></i></td>
                 <td> ${x.id_alumno}</td>
                 <td  id="nombre" style="width: auto;"><spam id="vlr">${x.nombre_alumno}</spam> </td>
@@ -119,11 +123,6 @@ renderTabla = (sTabla) => {
     });
 };
 
-
-
-
-
-
 const input = document.getElementById('intablaGrado');
 
 input.addEventListener('click', () => {
@@ -136,7 +135,6 @@ input.addEventListener('click', () => {
         console.log('7 a 9');
 
     } else {
-
 
         if (input.value == 10) {
             select.innerHTML = `<option value=2>AÑO FUNDAMENTO</option>`
@@ -157,7 +155,7 @@ input.addEventListener('click', () => {
 });
 
 
-
+// exportar ecxel
 const $btnExportar = document.querySelector("#btnExportar")
 $btnExportar.addEventListener("click", function (e) {
 
@@ -187,7 +185,7 @@ async function deleteAlumno(id) {
         const result = await main.deleteAlumno(id);
         console.log('borrado');
         getTablas();
-    }  
+    }
 
 };
 
@@ -223,11 +221,8 @@ alumnofrm.addEventListener('submit', async (e) => {
         modalidad_alumno: modalidad.value,
         padre_alumno: padre.value,
         domicilio_alumno: domicilio.value,
-        alumno_telefono:tel.value
+        alumno_telefono: tel.value
     };
-
-
-
 
     const result = await main.updateAlumno(alumno, id_alumno);
     if (result.affectedRows == 1) {
@@ -240,7 +235,58 @@ alumnofrm.addEventListener('submit', async (e) => {
 
 const a = document.querySelectorAll("a")
 
+// ascender alumno a otro grado
+
+function ascenderAlumno(x) {
+
+    const modalForm = document.getElementById('ascender')
+    modalForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const modalidad = document.getElementById('modalidadAsc').value
+
+        const grado = document.getElementById('gradoAsc').value
+
+        console.log(x, parseInt(grado), parseInt(modalidad))
+
+        const alumnoviejo = await main.AlumnoAscendido(x, grado, modalidad)
+
+    })
+
+}
+let select = document.getElementById('modalidadAsc')
+let output = document.getElementById('gradoAsc')
+output.addEventListener('click', () => {
+
+
+    if (output.value <= 9) {
+
+        select.innerHTML = `<option value=1>BÁSICA</option>
+       `
+
+    }
+    if (output.value == 9) {
+
+        select.innerHTML = `<option value=1>BÁSICA</option>
+        
+        `
+    }
+
+    if (output.value == 10) {
+        select.innerHTML = `<option value=2>AÑO FUNDAMENTO</option>`
+    }
+
+
+    if (output.value == 11) {
+        select.innerHTML = ` 
+        <option value=3>BCH</option>
+        <option value=4>BCH AC</option>
+        <option value=5>BTPAE</option>
+        <option value=6>BTPCF</option>
+        <option value=7>BTPI</option>`
+    }
 
 
 
+});
 module.exports = { getTablas }
