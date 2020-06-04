@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../bootstrap.min.css">
+    <link rel="stylesheet" href="./boletas.css">
+    <title>IHER LEGA </title>
+</head>
+
+<body class="">
+    <div class="row">
+        <section class="col-2">
+            <div>
+                <ul id="mnubutton" class="active">
+                    <li id="btnmenu" class="toggle-btn ">
+                        <span>&#9776</span>
+                    </li>
+                </ul>
+            </div>
+    
+            <div id="sidebar" class="active  ">
+    
+                <ul id="menu" class="nav flex-column animated fadeInLeft ">
+    
+    
+    
+                    <li class="nav-item disabled">
+                        <img src="../logo.png" alt="logo" class="logo">
+                    </li>
+    
+                    <li class="nav-item">
+                        <a href="../index.html">INICIO</a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a href="../matricula.html">MATRICULAR ALUMNO</a>
+                    </li c>
+    
+                    <li class="nav-item">
+                        <a href="../buscar.html">BUSCAR ALUMNO</a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a id="tab" href="../tablas.html">TABLAS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="">BOLETAS</a>
+                    </li>
+                    <li class=" nav-item" id="desplegar">
+                        <a href=""> <span class="fa fa-arrow-down"></span> NOTAS</a>
+                    </li>
+                    <li class="nav-item desplegable">
+                        <a href="../notas/asignotas.html">ASIGNAR NOTAS</a>
+                    </li>
+                    <li class="nav-item desplegable">
+                        <a href="../notas/verNotas.html">VER NOTAS</a>
+                    </li>
+    
+                </ul>
+      
+            </div>
+           
+
+
+        </section>
+
+        <div class="col-8  " style="height: 100vh;" >
+            <div id="moveContent" class="row move">
+
+                <div class="col buscarTabla ml-5">
+        
+                    <div class="row top  " >
+                        <div class="row mt-4">
+                            <h1>GENERAR BOLETAS</h1>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="mr-5">
+                            <label for="intablaGrado">GRADO</label>
+                            <input type="number" class="form-control" id="intablaGrado" min="7" max="12" required>
+                        </div>
+        
+                        <div class="tablacrear mr-5">
+                            <label class="" for="tablaGrado">MODALIDAD</label>
+                            <select required id="tablaGrado" class="form-control">
+        
+        
+        
+                            </select>
+                        </div>
+                        <div class="mr-5">
+                            <label for="year">AÑO DE MATRÍCULA</label>
+                            <input id="year" class="form-control" type="text" maxlength="4" onclick="ponerYear()">
+        
+                        </div>
+
+                        <div class="mr-5  "style="margin-top:1.8rem ;" >
+                            
+                            <select class=" form-control" name="semestre" id="semestre"> <option value="1">1</option> <option value="2">2</option></select>
+                       </div>
+        
+                        <div>
+                            <button type="button" class="btn btn-primary mt-4" id="generarBtn">
+                                GENERAR
+                            </button>
+                        </div>
+                        <button class=" btn exel form-control fa fa-cloud-download-alt mt-4" id="btnExportar">
+                            Descargar como exel
+                        </button>
+                    </div>
+                </div>
+        
+                 
+            </div>
+        </div>
+    </div>
+
+     
+ 
+    <script src="../js/inicio.js"></script>
+    <script src="../js/boletas.js"></script>
+</body>
+
+
+</html>

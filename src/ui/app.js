@@ -16,7 +16,7 @@ const apellido = document.getElementById('apellido');
 const padre = document.getElementById('padre');
 var nacimiento = document.getElementById('nacimiento');
 
-const tel =document.getElementById('tele')
+const tel = document.getElementById('tele')
 const grado = document.getElementById('grado');
 const sexo = document.getElementById('sexo');
 const modalidad = document.getElementById('modalidad');
@@ -28,9 +28,23 @@ const alumnosLista = document.getElementById('filas')
 const btnToggle = document.querySelector('.toggle-btn');
 const ulmenu = document.querySelector('#menu');
 
+const customTitlebar = require('custom-electron-titlebar');
+
+// 2. Create the custom titlebar with your own settings
+//    To make it work, we just need to provide the backgroundColor property
+//    Other properties are optional.
+let MyTitleBar = new customTitlebar.Titlebar({
+    backgroundColor: customTitlebar.Color.fromHex('#000000'),
+    shadow: true,
+    icon: '../logo-2.png',
+    overflow: "hidden",
+    menu: false
+});
+
+// 3. Update Titlebar text
+MyTitleBar.updateTitle(`IHER LEGA`);
 
 // prevenir le recarga de pagina cuando entre a un hiperenlace
-
 
 let alumno = [];
 
@@ -51,7 +65,7 @@ btnToggle.addEventListener('click', function () {
 
 
 
-const fecha= new Date
+const fecha = new Date
 const curYear = fecha.getFullYear()
 alumnofrm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -67,8 +81,8 @@ alumnofrm.addEventListener('submit', async (e) => {
         modalidad_alumno: modalidad.value,
         padre_alumno: padre.value,
         domicilio_alumno: domicilio.value,
-        alumno_telefono:tel.value,
-        ano:curYear
+        alumno_telefono: tel.value,
+        ano: curYear
 
     }
 
@@ -135,12 +149,12 @@ btnDesplegar.addEventListener('click', (e) => {
 
     icon.classList.toggle('fa-arrow-down');
     icon.classList.toggle('fa-arrow-up');
-   const desplega = document.querySelectorAll('.desplegable');
+    const desplega = document.querySelectorAll('.desplegable');
 
     desplega.forEach(elementos => {
 
         elementos.classList.toggle('ydesplegable');
-        
+
     })
 
 });

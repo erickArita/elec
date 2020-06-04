@@ -29,17 +29,40 @@ btnDesplegar.addEventListener('click', (e) => {
     })
 
 });
-// id a buscar
+const customTitlebar = require('custom-electron-titlebar');
 
+// 2. Create the custom titlebar with your own settings
+//    To make it work, we just need to provide the backgroundColor property
+//    Other properties are optional.
+let MyTitleBar = new customTitlebar.Titlebar({
+    backgroundColor: customTitlebar.Color.fromHex('#000000'),
+    shadow: true,
+    icon: '../logo-2.png',
+    overflow: "hidden",
+    menu: false
+});
 
-// la llamo en el reder
+// 3. Update Titlebar text
+MyTitleBar.updateTitle(`IHER LEGA ` );
+// pone el a:o actuar en un input de busqueda
+function ponerYear(){
+    let inputYear = document.getElementById('year')
+    const now = new Date();
+    const ano = now.getFullYear();
+    console.log(inputYear)
+    inputYear.value = ano;
+}
+
+// la llamo en el render
 async function buscarAlumno() {
 
     const id = document.getElementById('intablaGrado').value;
+    const year = document.getElementById('year').value
 
-    const result = await main.getthinkById(id);
+    console.log(id,year)
 
-    console.log(result)
+    const result = await main.getthinkByIdAndYear(id,parseInt(year));
+
     renderTabla(result);
 }
 
@@ -50,7 +73,7 @@ function renderTabla(result) {
     tablaGenerar.innerHTML +=
         `
             <tr class="animated bounceInLeft" > 
-            <tr class="animated bounceInLeft" > 
+             
             <td > <a href="#modal1" id="show-modal" onclick="editAlumno(${result.id_alumno})"><i id="edit" class="fa fa-pen-square animated " ></i></a>
             <i id="delete"  class="fa fa-trash-alt animated " onclick="deleteAlumno(${result.id_alumno})" ></i></td>
                 <td> ${result.id_alumno}</td>

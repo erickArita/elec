@@ -4,7 +4,21 @@ const { remote } = require('electron')
 const main = remote.require('./main')                   //main es mi back end
 
 
+const customTitlebar = require('custom-electron-titlebar');
 
+// 2. Create the custom titlebar with your own settings
+//    To make it work, we just need to provide the backgroundColor property
+//    Other properties are optional.
+let MyTitleBar = new customTitlebar.Titlebar({
+    backgroundColor: customTitlebar.Color.fromHex('#000000'),
+    shadow: true,
+    icon: '../logo-2.png',
+    overflow: "hidden",
+    menu: false
+});
+
+// 3. Update Titlebar text
+MyTitleBar.updateTitle(`IHER LEGA `);
 
 
 const btnDesplegar = document.getElementById('desplegar');
@@ -81,21 +95,7 @@ input.addEventListener('click', () => {
 
 });
 
-//  funcion para sacar el promedio
-function promedio(objeto, divisor, Scut, Fcut) {
-    // le paso los alumnos y saco los valores de cada uno
-    let valores = Object.values(objeto);
-    console.log(valores)
-    // seleccionamos los valores que queremos
-    let notas = valores.slice(Scut, Fcut)
-    // filtramos que boolean nos debuelve true si es numero
-    var promedio = notas.filter(Boolean);
-    // quitamos los que son falses y sumamos los valores y diviorD
-    let total = promedio.reduce((a, b) => (a + b), 0);
-    totalNeto = total / divisor
-    // quitamos las cifras decimales y lo limitamos a 2
-    return totalNeto.toFixed(2);
-}
+
 
 // pone el a:o actuar en un input de busqueda
 function ponerYear(){
@@ -111,16 +111,30 @@ generar.addEventListener('click', () => {
     const grado = input.value;
     const modalidad = select.value;
     const year = document.getElementById('year').value
-    console.log(grado, modalidad,year)
+    console.log(grado, modalidad,parseInt(year))
 
-    getNotas(grado, modalidad,year)
+    getNotas(grado, modalidad,parseInt(year))
 })
 let nota = [];
 async function getNotas(grado, modalidad,year) {
-
+    
     nota = await main.getNotas(grado, modalidad,year);
     renderTabla(nota);
     console.log(nota)
+}
+//  funcion para sacar el promedio
+function promedio(objeto, divisor, Scut, Fcut) {
+    // le paso los alumnos y saco los valores de cada uno
+    let valores = Object.values(objeto);
+    // seleccionamos los valores que queremos
+    let notas = valores.slice(Scut, Fcut)
+    // filtramos que boolean nos debuelve true si es numero
+    var promedio = notas.filter(Boolean);
+    // quitamos los que son falses y sumamos los valores y diviorD
+    let total = promedio.reduce((a, b) => (a + b), 0);
+    totalNeto = total / divisor
+    // quitamos las cifras decimales y lo limitamos a 2
+    return totalNeto.toFixed(2);
 }
 
 // exportar exel
@@ -533,7 +547,7 @@ function renderTabla(notas) {
             <th><p  class="vertical">Inglés Técnico	</th>
             <th><p  class="vertical">Lengua y Literatura	</th>
             <th><p  class="vertical">Administracion General</th>	
-            <th><p  class="vertical">Etica y Orientación Profesional	</th>
+            <th><p  class="vertical">Ética y Orientación Profesional	</th>
             <th><p  class="vertical">Contabilidad I	</th>
             <th><p  class="vertical">Mercadotecnia	</th>
             <th><p  class="vertical">Legislación Bancaria</th>	

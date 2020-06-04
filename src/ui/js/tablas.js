@@ -1,7 +1,21 @@
 
 const { remote } = require('electron');
 const main = remote.require('./main');
+const customTitlebar = require('custom-electron-titlebar');
 
+// 2. Create the custom titlebar with your own settings
+//    To make it work, we just need to provide the backgroundColor property
+//    Other properties are optional.
+let MyTitleBar = new customTitlebar.Titlebar({
+    backgroundColor: customTitlebar.Color.fromHex('#000000'),
+    shadow: true,
+    icon: '../logo-2.png',
+    overflow: "hidden",
+    menu: false
+});
+
+// 3. Update Titlebar text
+MyTitleBar.updateTitle(`IHER LEGA  `);
 
 // ahora que ya cargue remote lo ocupo y le digo de donde traer x cosa de main
 
@@ -68,7 +82,7 @@ generarBtn.addEventListener('click', (e) => {
     getTablas();
 });
 // pone el a:o actuar en un input de busqueda
-function ponerYear(){
+function ponerYear() {
     let inputYear = document.getElementById('year')
     const now = new Date();
     const ano = now.getFullYear();
@@ -82,13 +96,19 @@ getTablas = async (e) => {
     const tablaGrado = document.getElementById('tablaGrado').value;
     const years = document.getElementById('year').value
 
-   
+
 
     let sTabla = await main.getTablas(intablaGrado, tablaGrado, parseInt(years));
 
 
     renderTabla(sTabla);
+
+   
+
+
 };
+
+ 
 
 function edad(nacimiento) {
     var now = new Date();
@@ -254,31 +274,31 @@ function ascenderAlumno(x) {
     })
 
 }
-let select = document.getElementById('modalidadAsc')
+let sel = document.getElementById('modalidadAsc')
 let output = document.getElementById('gradoAsc')
 output.addEventListener('click', () => {
 
 
     if (output.value <= 9) {
 
-        select.innerHTML = `<option value=1>BÁSICA</option>
+        sel.innerHTML = `<option value=1>BÁSICA</option>
        `
 
     }
     if (output.value == 9) {
 
-        select.innerHTML = `<option value=1>BÁSICA</option>
+        sel.innerHTML = `<option value=1>BÁSICA</option>
         
         `
     }
 
     if (output.value == 10) {
-        select.innerHTML = `<option value=2>AÑO FUNDAMENTO</option>`
+        sel.innerHTML = `<option value=2>AÑO FUNDAMENTO</option>`
     }
 
 
     if (output.value == 11) {
-        select.innerHTML = ` 
+        sel.innerHTML = ` 
         <option value=3>BCH</option>
         <option value=4>BCH AC</option>
         <option value=5>BTPAE</option>
