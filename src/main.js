@@ -73,13 +73,13 @@ function createWindow() {
         webPreferences: {
             nodeIntegration: true
         },
-        icon: __dirname + '/logo-2.png',
+         
         frame:false
         
 
     })
 
-    window.removeMenu()
+    // window.removeMenu()
      
     window.loadFile('src/ui/index.html')
 
