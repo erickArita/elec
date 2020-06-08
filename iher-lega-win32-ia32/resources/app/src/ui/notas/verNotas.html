@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../bootstrap.min.css">
+    <link rel="stylesheet" href="../animacion.css">
+
+    <link rel="stylesheet" href="../js/csss/tablas.css">
+    <link rel="stylesheet" href="../css/all.min.css">
+    <link rel="stylesheet" href="../js/csss/verNotas.css">
+
+    <title>IHER LEGA </title>
+</head>
+
+<body class="">
+
+    <div class="col btnTop">
+        <div>
+            <ul id="mnubutton" class="active">
+                <li id="btnmenu" class="toggle-btn ">
+                    <span>&#9776</span>
+                </li>
+            </ul>
+        </div>
+
+        <div id="sidebar" class="desactive active">
+
+            <ul id="menu" class="nav flex-column animated fadeInLeft ">
+
+
+
+                <li class="nav-item disabled">
+                    <img src="../logo.png" alt="logo" class="logo">
+                </li>
+
+                <li class="nav-item">
+                    <a href="../index.html">INICIO</a>
+                </li>
+
+                <li class="nav-item">
+                    <a id="matricula" href="../matricula.html">MATRICULAR ALUMNO</a>
+                </li c>
+
+                <li class="nav-item">
+                    <a href="../buscar.html">BUSCAR ALUMNO</a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="../tablas.html">TABLAS</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../boletas/boletas.html">BOLETAS</a>
+                </li>
+                <li class=" nav-item" id="desplegar">
+                    <a href=""> <span class="fa fa-arrow-down"></span> NOTAS</a>
+                </li>
+                <li class="nav-item desplegable">
+                    <a href="asignotas.html">ASIGNAR NOTAS</a>
+                </li>
+                <li class="nav-item desplegable">
+                    <a href="verNotas.html">VER NOTAS</a>
+                </li>
+
+            </ul>
+
+
+        </div>
+    </div>
+
+
+    <div id="moveContent" class="row move">
+
+        <div class="col buscarTabla">
+
+            <div class="row top">
+                <div class="row">
+                    <h1>VER NOTAS</h1>
+                </div>
+                <div class="w-100"></div>
+                <div>
+                    <label for="intablaGrado">GRADO</label>
+                    <input type="number" class="form-control" id="intablaGrado" min="7" max="12" required>
+                </div>
+
+                <div class="tablacrear">
+                    <label class="" for="tablaGrado">MODALIDAD</label>
+                    <select required id="tablaGrado" class="form-control">
+
+
+
+                    </select>
+                </div>
+                <div>
+                    <label for="year">AÑO DE MATRÍCULA</label>
+                    <input id="year" class="form-control" type="text" maxlength="4" onclick="ponerYear()">
+
+                </div>
+
+                <div>
+                    <button type="button" class="btn btn-primary mt-4" id="generarBtn">
+                        GENERAR
+                    </button>
+                </div>
+                <button class=" btn exel form-control fa fa-cloud-download-alt mt-4" id="btnExportar">
+                    Descargar como exel
+                </button>
+            </div>
+        </div>
+
+        <div class="w-100"></div>
+
+        <div class="col tbl">
+            <table id="tbl" class="table table-hover  table-responsive  ">
+
+
+
+            </table>
+
+        </div>
+    </div>
+
+    <script>
+        window.jQuery = window.$ = require('jquery');
+    </script>
+
+    <script>
+        require('@popperjs/core')
+    </script>
+
+    <script>
+        require('xlsx')
+    </script>
+    <script>
+        require('filesaver')
+    </script>
+    <script>
+        require('tableexport')
+    </script>
+
+    <script src="../js/verNotas.js"></script>
+</body>
+
+
+
+</html>

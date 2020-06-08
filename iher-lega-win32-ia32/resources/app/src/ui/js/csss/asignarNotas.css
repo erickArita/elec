@@ -1,0 +1,32 @@
+ .exel{
+     margin: 0;
+     margin-left: 5px;
+ }
+
+#generarBtn{
+    width: 6rem;
+    margin: 0;
+    padding:1 ;
+}
+
+#parcial{
+    margin-left: 3px;
+    padding:6px ;
+}
+#tablaGrado{
+    margin-left: 3px;
+    padding:6px ;
+}
+.tablacrear label{
+    margin-top: 2px;
+
+}
+
+#intablaGrado{
+    padding:5px ;
+}
+
+#tbl input{
+    width: 30px;
+    border:none;
+}

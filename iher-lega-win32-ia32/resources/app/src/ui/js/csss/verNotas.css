@@ -1,0 +1,246 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    overflow-x: hidden;
+    overflow-y: hidden;
+
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+#sidebar {
+    width: 200px;
+    height: 94vh;
+    background: linear-gradient(45deg, #000850 0%, #000320 100%), radial-gradient(100% 225% at 100% 0%, #FF6928 0%, #000000 100%), linear-gradient(225deg, #FF7A00 0%, #000000 100%), linear-gradient(135deg, #CDFFEB 10%, #CDFFEB 35%, #009F9D 35%, #009F9D 60%, #07456F 60%, #07456F 67%, #0F0A3C 67%, #0F0A3C 100%);
+    background-blend-mode: screen, overlay, hard-light, normal;
+    transform: translateX(-217px);
+    transition: 900ms;
+
+}
+
+#sidebar:first-child {
+    position: absolute;
+    width: 200px;
+    height: 100vh;
+
+    opacity: 100;
+    transition: 2s;
+
+}
+
+
+
+#sidebar.active {
+    transform: translateX(0);
+    position: absolute;
+}
+
+.desactive {
+    position: absolute;
+}
+
+
+#sidebar ul {
+    padding: 0;
+}
+
+#sidebar ul li a:hover {
+    color: rgb(64, 109, 233);
+    transition: 800ms;
+}
+
+#sidebar ul li {
+    color: black;
+    text-align: center;
+    margin: 0;
+    padding: 15px 10px;
+    list-style: none;
+    border-bottom: 1px solid rgba(100, 100, 100, 0.3);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+#sidebar ul li:first-child {
+    color: black;
+    text-align: center;
+    margin: 0;
+    padding: 1px 5px;
+    list-style: none;
+    border-bottom: 1px solid rgba(100, 100, 100, 0.3);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+#sidebar ul li:hover {
+    color: rgb(31, 31, 31);
+
+    background-color: rgb(37, 34, 34);
+    transition: 1s;
+}
+
+#sidebar ul li:hover:first-child {
+    color: rgb(31, 31, 31);
+    background-color: transparent;
+    transition: 1s;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
+.toggle-btn {
+    position: relative;
+    cursor: pointer;
+    background: linear-gradient(45deg, #fffb01 0%, #000320 100%), radial-gradient(100% 225% at 100% 0%, #FF6928 0%, #000000 100%), linear-gradient(225deg, #FF7A00 0%, #000000 100%), linear-gradient(135deg, #CDFFEB 10%, #CDFFEB 35%, #009F9D 35%, #009F9D 60%, #07456F 60%, #07456F 67%, #0F0A3C 67%, #0F0A3C 100%);
+    background-blend-mode: screen, overlay, normal;
+    width: 200px;
+    height: 42px;
+    transition: 1000ms;
+    list-style: none;
+}
+
+.scc {
+    width: 200px;
+}
+
+.btnTop {
+    padding: 0;
+}
+
+#mnubutton {
+    width: 200px;
+    margin: 0;
+    margin-left: 0;
+    left: 0;
+    padding-left: 0;
+
+
+}
+
+#menu a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.87);
+    font-weight: bold;
+}
+
+.ver {
+    background-color: transparent;
+    color: rgb(31, 31, 31);
+    transform: translateX(-170px);
+    transition: 1000ms;
+}
+
+.ver span {
+    background-color: transparent;
+    color: rgb(31, 31, 31);
+    transform: translateX(170px);
+    height: 99%;
+    transition: 1000ms;
+}
+
+.toggle-btn span {
+    display: flex;
+    width: 30px;
+    align-items: flex-end;
+    text-align: end;
+    font-size: 29px;
+    border: 1px solid black;
+}
+
+.toggle-btn span:hover {
+    color: rgb(64, 109, 233);
+    transition: 800ms;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.781);
+}
+
+#desplegar a {
+    color: rgb(0, 86, 247);
+
+}
+
+.desplegable {
+    opacity: 0;
+    transform: translateY(-1rem);
+    transition: 800ms;
+}
+
+.ydesplegable {
+    opacity: 1;
+    transform: translateY(0.1px);
+    transform-origin: top;
+    transition: 1s;
+}
+
+/* formulario */
+
+
+
+.input {
+    margin-bottom: 1rem;
+}
+
+.top div {
+    margin-left: 5rem;
+}
+
+
+
+/* tabla */
+
+.table {
+    width: auto;
+    min-width: 20rem;
+    margin-top: 1rem;
+
+}
+
+.table thead th {
+    text-align: center;
+}
+
+.tbl {
+    padding-right: 0;
+    height: 83vh;
+
+}
+
+#tbl {
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.move {
+    transform: translateX(140px);
+    transition: 500ms;
+}
+
+
+.moveStart {
+    transform: translateX(-20px);
+    transition: 800ms linear;
+}
+
+/* estilos de tablas  */
+.vertical {
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+}
+
+/* boton excel */
+
+#generarBtn{
+    margin-right: 10px;
+}
