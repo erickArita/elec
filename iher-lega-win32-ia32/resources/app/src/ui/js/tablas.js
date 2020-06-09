@@ -122,7 +122,29 @@ renderTabla = (sTabla) => {
     tablaGenerar.innerHTML = '';
     sTabla.forEach(x => {
 
-
+        if(x.modalidad_alumno==1){
+            x.modalidad_alumno=`BÁSCA`
+        }
+        if(x.modalidad_alumno==2){
+            x.modalidad_alumno=`AÑO DE FUNDAMENTO`
+        }
+        if(x.modalidad_alumno==3){
+            x.modalidad_alumno=`BCH`
+        }
+        if(x.modalidad_alumno==4){
+            x.modalidad_alumno=`BCHAC`
+        }
+        if(x.modalidad_alumno==5){
+            x.modalidad_alumno=`BTPAE`
+        }
+        if(x.modalidad_alumno==2){
+            x.modalidad_alumno=`BTPCF`
+        }
+        if(x.modalidad_alumno==2){
+            x.modalidad_alumno=`BTPI`
+        }
+        console.log(x)
+        console.log(x.modalidad_alumno)
         tablaGenerar.innerHTML +=
             `
             <tr > 
@@ -212,7 +234,7 @@ async function deleteAlumno(id) {
 
 async function editAlumno(x) {
     const result = await main.getthinkById(x)
-
+    
     id.value = result.id_alumno;
     nombre.value = result.nombre_alumno;
     apellido.value = result.apellido_alumno;

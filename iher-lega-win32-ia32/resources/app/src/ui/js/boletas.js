@@ -89,10 +89,28 @@ let MyTitleBar = new customTitlebar.Titlebar({
     menu: false
 });
 
-// 3. Update Titlebar text
+
+
+const pedir = document.getElementById('bolerOrConst')
+pedir.addEventListener('click', () => {
+    console.log(pedir.value)
+})
+
+
+
+
 generar.addEventListener('click', async () => {
 
+
     const pedir = document.getElementById('bolerOrConst').value
+    if (pedir == 1) {
+        const grado = input.value;
+        const modalidad = select.value;
+        const yea = document.getElementById('year').value
+
+        await main.getConst(grado, modalidad, parseInt(yea))
+    }
+
     if (pedir == 0) {
         let semestre = document.getElementById('semestre').value
 
@@ -107,32 +125,10 @@ generar.addEventListener('click', async () => {
 
 })
 
-const pedir = document.getElementById('bolerOrConst')
-pedir.addEventListener('click', () => {
-    console.log(pedir.value)
-})
 
 
 
-
-generar.addEventListener('click', async() => {
-
-
-    const pedir = document.getElementById('bolerOrConst').value
-    if (pedir == 1) {
-        const grado = input.value;
-        const modalidad = select.value;
-        const yea = document.getElementById('year').value
-
-        await main.getConst(grado, modalidad, yea)
-    }
-
-})
-
-
-
-
-
-
-
-
+let date = new Date();
+let da = date.getDate()
+ 
+ console.log(   da)

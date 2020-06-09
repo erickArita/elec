@@ -1,6 +1,6 @@
 {
   "name": "iher-lega",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "its app for win7 32bits",
   "main": "src/index.js",
   "scripts": {

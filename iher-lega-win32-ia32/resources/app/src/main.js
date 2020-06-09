@@ -61,7 +61,7 @@ async function getTablas(grado, modalidad, year) {
 
         const result = await conn.query(m, [grado, modalidad, year]);
 
-
+        console.log(result)
         return result;
 
     } catch (error) {
@@ -82,12 +82,12 @@ function createWindow() {
 
         },
 
-        frame: true
+        frame: false
 
 
     })
 
-    // window.removeMenu()
+    window.removeMenu()
 
     window.loadFile(__dirname + '/ui/index.html')
 
@@ -416,21 +416,7 @@ async function updateNotas(notas, modalidad, grado, idNota) {
 
 
 
-//  funcion para sacar el promedio
-function promedio(objeto, divisor, Scut, Fcut) {
-    // le paso los alumnos y saco los valores de cada uno
-    let valores = Object.values(objeto);
-    console.log(valores)
-    // seleccionamos los valores que queremos
-    let notas = valores.slice(Scut, Fcut)
-    // filtramos que boolean nos debuelve true si es numero
-    var promedio = notas.filter(Boolean);
-    // quitamos los que son falses y sumamos los valores y diviorD
-    let total = promedio.reduce((a, b) => (a + b), 0);
-    totalNeto = total / divisor
-    // quitamos las cifras decimales y lo limitamos a 2
-    return totalNeto.toFixed(2);
-}
+ 
 //  funcion para sacar el promedio
 function promedio(objeto, divisor, Scut, Fcut) {
     // le paso los alumnos y saco los valores de cada uno
@@ -2594,45 +2580,46 @@ async function getConst(g, m, y) {
                 break
         }
 
-        const date = new Date();
-        const fecha = date.getDay();
-        let mes = date.getMonth();
-        const ano = date.getFullYear();
+        let date = new Date();
+        let fecha = date.getDate();
+         let mes =date.getMonth()
+      
+        let ano = date.getFullYear();
         switch (mes) {
-            case 1:
+            case 0:
                 mes = 'Enero'
                 break;
-            case 2:
+            case 1:
                 mes = 'Febrero'
                 break;
-            case 3:
+            case 2:
                 mes = 'Marzo'
                 break;
-            case 4:
+            case 3:
                 mes = 'Abril'
                 break;
-            case 5:
+            case 4:
                 mes = 'Mayo'
                 break;
-            case 6:
+            case 5:
                 mes = 'Junio'
                 break;
-            case 7:
+            case 6:
                 mes = 'Julio'
                 break;
-            case 8:
+            case 7:
                 mes = 'Agosto'
                 break;
-            case 9:
+            case 8:
                 mes = 'Septiembre'
                 break;
-            case 10:
+            case 9:
                 mes = 'Octubre'
                 break;
-            case 11:
+            case 10:
                 mes = 'Noviembre'
                 break;
-            case 12:
+            case 11:
                 mes = 'Diciembre'
                 break;
         }

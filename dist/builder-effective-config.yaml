@@ -1,0 +1,11 @@
+directories:
+  output: dist
+  buildResources: build
+appId: com.erick.schoolS
+win:
+  target:
+    - target: nsis
+      arch:
+        - ia32
+  icon: src/logo.ico
+electronVersion: 8.3.1
