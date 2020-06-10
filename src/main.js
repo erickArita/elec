@@ -891,7 +891,7 @@ async function boleta(g, m, year, seme) {
                             <div >
                                 <img class="ml-5"  src="logo.jpg" alt="logo">
                             </div>
-                            <div class="" style="margin-top: 1rem;">
+                            <div class="" style="margin-top: 3rem;">
                                 <table class="tbl table-bordered w-75">
                                     <thead>
                                         <th class="text-center">
@@ -998,7 +998,7 @@ async function boleta(g, m, year, seme) {
                             <div >
                                 <img class="ml-5"  src="logo.jpg" alt="logo">
                             </div>
-                            <div class="" style="margin-top: 1rem;">
+                            <div class="" style="margin-top: 3rem;">
                                 <table class="tbl table-bordered w-75">
                                     <thead>
                                         <th class="text-center">
